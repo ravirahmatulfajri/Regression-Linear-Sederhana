@@ -1,0 +1,73 @@
+---
+title: "Regresi-Linear-T5DM"
+author: "Ravi Rahmatul Fajri"
+date: "4/5/2021"
+output: word_document
+---
+
+```{r}
+View(cars)
+```
+```{r}
+str(cars)
+```
+```{r}
+dim(cars)
+```
+```{r}
+ncol(cars)
+```
+```{r}
+?cars
+```
+```{r}
+plot(dist ~ speed, data = cars,
+     xlab = "Speed (in Miles Per Hour)",
+     ylab = "Stopping Distance (in Feet)",
+     main = "Stopping Distance vs Speed",
+     pch  = 20,
+     cex  = 2,
+     col  = "grey")
+```
+```{r}
+x = cars$speed
+y = cars$dist
+```
+```{r}
+Sxy = sum((x - mean(x)) * (y - mean(y)))
+Sxx = sum((x - mean(x)) ^ 2)
+Syy = sum((y - mean(y)) ^ 2)
+c(Sxy, Sxx, Syy)
+```
+```{r}
+beta_1_hat = Sxy / Sxx
+beta_0_hat = mean(y) - beta_1_hat * mean(x)
+c(beta_0_hat, beta_1_hat)
+```
+```{r}
+unique(cars$speed)
+```
+```{r}
+beta_0_hat + beta_1_hat * 8
+```
+```{r}
+8 %in% unique(cars$speed)
+```
+```{r}
+21 %in% unique(cars$speed)
+```
+```{r}
+min(cars$speed) < 21 & 21 < max(cars$speed)
+```
+```{r}
+beta_0_hat + beta_1_hat * 21
+```
+```{r}
+range(cars$speed)
+```
+```{r}
+range(cars$speed)[1] < 50 & 50 < range(cars$speed)[2] 
+```
+```{r}
+beta_0_hat + beta_1_hat * 50
+```
